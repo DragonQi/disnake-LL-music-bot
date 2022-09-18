@@ -96,7 +96,7 @@ class EmbedPaginator(disnake.ui.View):
     async def interaction_check(self, interaction: disnake.MessageInteraction) -> bool:
 
         if interaction.author != self.ctx.author:
-            await interaction.send(f"O apenas o membro {self.ctx.author.mention} pode usar estes botões...")
+            await interaction.send(f"Только участник {self.ctx.author.mention} может использовать эти кнопки...")
             return False
 
         return True
@@ -140,11 +140,11 @@ def sync_message(bot: BotCore):
     app_commands_invite = f"https://discord.com/api/oauth2/authorize?client_id={bot.user.id}&scope=applications.commands"
     bot_invite = disnake.utils.oauth_url(bot.user.id, permissions=disnake.Permissions(bot.config['INVITE_PERMISSIONS']), scopes=('bot', 'applications.commands'))
 
-    return f"`Caso os comandos de barra não apareçam,` [`clique aqui`]({app_commands_invite}) `para me permitir " \
-           "criar comandos de barra no servidor.`\n\n" \
-           "`Nota: Em alguns casos os comandos de barra podem demorar até uma hora pra aparecer/atualizar em todos " \
-           "os servidores. Caso queira usar os comandos de barra imediatamente no servidor você terá que " \
-           f"me expulsar do servidor e em seguida me adicionar novamente através deste` [`link`]({bot_invite})..."
+    return f"`Если слэш-команды не отображаются,` [`кликните сюда`]({app_commands_invite}) `чтобы позволить мне " \
+           "создавать слэш-команды на сервере.`\n\n" \
+           "`Примечание. В некоторых случаях для появления/обновления команд со слешем может потребоваться до часа." \
+           "серверы. Если вы хотите использовать слэш-команды сразу на сервере, вам придется " \
+           f"выкинь меня с сервера и снова добавь через это` [`link`]({bot_invite})..."
 
 
 def chunk_list(lst: list, amount: int):
@@ -218,19 +218,19 @@ async def send_idle_embed(
 ):
 
     if isinstance(target, disnake.Thread) and isinstance(target.parent, disnake.ForumChannel):
-        content = "Post para pedido de músicas."
+        content = "Сообщение для запроса песни."
     else:
         content = None
 
-    embed = disnake.Embed(description="**Entre em um canal de voz e peça uma música aqui " +
-                                      ("no post" if content else "no canal ou na conversa abaixo") +
-                                      " (ou clique no botão abaixo)**\n\n"
-                                      "**Você pode usar um nome ou um link de site compatível:**"
+    embed = disnake.Embed(description="**Присоединяйтесь к голосовому каналу и запросите песню здесь " +
+                                      ("нет поста" if content else "на канале или в беседе ниже") +
+                                      " (или нажмите кнопку ниже)**\n\n"
+                                      "**Вы можете использовать имя или ссылку на поддерживаемый веб-сайт:**"
                                       " ```ansi\n[31;1mYoutube[0m, [33;1mSoundcloud[0m, [32;1mSpotify[0m, [34;1mTwitch[0m```\n",
                           color=bot.get_color(target.guild.me))
 
     if text:
-        embed.description += f"**ÚLTIMA AÇÃO:** {text.replace('**', '')}\n"
+        embed.description += f"**Последнее действие:** {text.replace('**', '')}\n"
 
     embed.set_thumbnail(target.guild.me.display_avatar.replace(size=256).url)
 
@@ -244,7 +244,7 @@ async def send_idle_embed(
     if opts:
         components.append(
             disnake.ui.Select(
-                placeholder="Músicas/Playlists do servidor.",
+                placeholder="Серверные песни/плейлисты.",
                 options=opts, custom_id="player_guild_pin",
                 min_values=0, max_values=1
             )
@@ -255,12 +255,12 @@ async def send_idle_embed(
             disnake.ui.Button(
                 emoji="🎶",
                 custom_id=PlayerControls.add_song,
-                label="Pedir uma música"
+                label="Запросить песню"
             ),
             disnake.ui.Button(
                 emoji="⭐",
                 custom_id=PlayerControls.enqueue_fav,
-                label="Tocar favorito"
+                label="Добавить в избранное"
             )
         ]
     )

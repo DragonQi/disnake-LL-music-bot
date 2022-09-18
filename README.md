@@ -1,17 +1,17 @@
 # disnake-LL-music-bot
-## bot de música programado em python com player interativo, comandos barra/slash, etc. Utilizando as libs disnake e wavelink/lavalink.
+## музыкальный бот, запрограммированный на питоне, с интерактивным плеером, командами слэш/слэш и т. д. Использование библиотек disnake и wavelink/lavalink.
 
 ### Algumas previews:
 
-- Comandos de barra / Slash commands
+- Для работы с ботом используйте / команды
 
 ![](https://media.discordapp.net/attachments/554468640942981147/944942596814426122/unknown.png)
 
-- Player controller: modo normal/mini-player (skin: default_progressbar)
+- Player controller: normal/mini-player (skin: default_progressbar)
 
 ![](https://media.discordapp.net/attachments/554468640942981147/944942948406153276/unknown.png)
 
-- Player controller: modo fixo/estendido com canal e conversa de song requests (skin: default_progressbar), configurável com o comando: /setup
+- Player controller: fixed/extended with song requests channel and conversation (skin: default_progressbar), configurable with command: /setup
 
 ![](https://media.discordapp.net/attachments/554468640942981147/944945573834936340/unknown.png)
 
@@ -19,9 +19,9 @@
 
 ![](https://media.discordapp.net/attachments/554468640942981147/1019806568134475786/forum_song_request.png)
 
-* Há diversas outras skins, veja todas usando o comando /change_skin (você também pode criar outras, use os modelos padrões que estão na pasta [skins](utils/music/skins/) como referência, crie uma cópia com outro nome e modifique a seu gosto).
+* Есть несколько других скинов, посмотрите их все с помощью команды /change_skin (вы также можете создать другие, используйте шаблоны по умолчанию, которые находятся в папке [skins](utils/music/skins/) в качестве эталона, создайте копию с другим имя и изменить свой вкус).
 
-## Teste agora mesmo um bot próprio com esta source fazendo deploy em um dos serviços abaixo:
+## Протестируйте своего собственного бота прямо сейчас с этим источником, развернув его в одном из следующих сервисов:
 
 ---
 
@@ -33,11 +33,11 @@ Repl.it
 
 [![Run on Repl.it](https://replit.com/badge/github/zRitsu/disnake-LL-music-bot)](https://replit.com/new/github/zRitsu/disnake-LL-music-bot)
 
-* 1 - Após clicar no botão acima, aguarde até o deploy ser concluído.
-* 2 - Vá em secrets (cadeado do painel à esquerda) e crie uma secret com nome TOKEN e no value coloque o token do bot (caso não tenha, veja como obter com este tutorial [tutorial](https://www.youtube.com/watch?v=lfdmZQySTXE)).
-* 3 - Também altamente recomendo usar mongodb para database ao invés de json, pra isso crie uma key com nome MONGO e no value coloque o link de sua url do mongodb (caso não tenha, veja como obter por este [tutorial](https://www.youtube.com/watch?v=x1Gq5beRx9k)). </br>
-`se desejar, você pode alterar outras configs, consulte o arquivo .env-example`
-* 4 - Clique em run (botão de **play**) e aguarde o bot instalar as dependências e iniciar.
+* 1 - После нажатия кнопки выше дождитесь завершения развертывания.
+* 2 - Перейдите к секретам (замок на левой панели) и создайте секрет с именем TOKEN и в качестве значения поместите токен бота (если у вас его нет, посмотрите, как его получить с помощью этого руководства [учебник] (https:/ /www.youtube.com/watch?v=lfdmZQySTXE)).
+* 3 - Я также настоятельно рекомендую использовать mongodb для базы данных вместо json, для этого создайте ключ с именем MONGO и в значении укажите ссылку на ваш URL-адрес mongodb (если у вас его нет, посмотрите, как получить его через это [ учебник](https://www.youtube.com/watch?v=x1Gq5beRx9k)). </br>
+  `при желании вы можете изменить другие конфиги, см. файл .env-example`
+* 4 - Нажмите «Выполнить» (кнопка **play**) и подождите, пока бот установит зависимости и запустится.
 </details>
 
 ---
@@ -50,11 +50,11 @@ Render.com
 
 [![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/zRitsu/disnake-LL-music-bot/tree/main)
 
-* 1 - No campo **TOKEN** coloque o token do bot **( [tutorial de como obter](https://www.youtube.com/watch?v=lfdmZQySTXE) )**.
-* 2 - No campo **DEFAULT_PREFIX** coloque um prefixo para o bot.
-* 3 - Nos campos **SPOTIFY_CLIENT_ID** e **SPOTIFY_CLIENT_SECRET** coloque as suas keys do spotify **( [tutorial de como obter](https://www.youtube.com/watch?v=ceKQjWiCyWE) )**.
-* 4 - No campo **MONGO** coloque o link da sua database do MongoDB **( [tutorial de como obter](https://www.youtube.com/watch?v=x1Gq5beRx9k) )**.
-* 5 - Clique em Apply e aguarde o processo de build até o bot iniciar (isso pode demorar bastante, no mínimo uns 13 minutos ou mais para o deploy ser finalizado + bot iniciar + servidor lavalink iniciar).
+* 1 - В поле **TOKEN** введите токен бота **( [инструкция по получению](https://www.youtube.com/watch?v=lfdmZQySTXE) )**.
+* 2 - В поле **DEFAULT_PREFIX** указать префикс для бота.
+* 3 - В полях **SPOTIFY_CLIENT_ID** и **SPOTIFY_CLIENT_SECRET** введите свои ключи Spotify **( [руководство по получению](https://www.youtube.com/watch?v=ceKQjWiCyWE))* *.
+* 4 - В поле **MONGO** поместите ссылку на вашу базу данных MongoDB **( [руководство по получению](https://www.youtube.com/watch?v=x1Gq5beRx9k) )**.
+* 5 - Нажмите Применить и дождитесь процесса сборки, пока бот не запустится (это может занять много времени, не менее 13 минут или более, чтобы завершить развертывание + запуск бота + запуск сервера lavalink).
 </details>
 
 ---
@@ -66,10 +66,10 @@ Railway
 <br>
 
 [![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/new/template/WbAx7d?referralCode=JDUKpu)
-* 1 - Preencha os dados que vão ser requisitados na próxima página (os que tem asteríscos vermelhos são obrigatórios).
-* 2 - Clique no botão deploy e aguarde até o deploy ser concluído (Ficando com cor verde. Pode demorar alguns segundos antes de aparecer um deploy na lista).
-* **Nota 1:** Requer uma conta do github com um bom tempo de criado ou um cartão de crédito para ter uma conta verificada.
-* **Nota 2:** Caso queira alterar as configs usadas no passo 1, clique em variables e crie/altere a key e o valor desejado da config, consulte o arquivo .env-example para ver todas as configs disponíveis.
+* 1 - Заполните данные, которые будут запрошены на следующей странице (обязательны отмеченные красными звездочками).
+* 2 - Нажмите кнопку развертывания и дождитесь завершения развертывания (зеленый цвет. Может пройти несколько секунд, прежде чем развертывание появится в списке).
+* **Примечание 1:** Требуется учетная запись github с хорошим временем сборки или кредитная карта для подтверждения учетной записи.
+* **Примечание 2:** Если вы хотите изменить конфигурации, используемые на шаге 1, щелкните переменные и создайте/измените ключ и желаемое значение конфигурации, обратитесь к файлу .env-example, чтобы просмотреть все доступные конфигурации.
 </details>
 
 ---
@@ -82,10 +82,10 @@ Gitpod
 
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/zRitsu/disnake-LL-music-bot)
 
-* 1 - Abra o arquivo .env e coloque o token do bot no campo apropriado (caso não tenha, veja como obter com este tutorial [tutorial](https://www.youtube.com/watch?v=lfdmZQySTXE) de como obter). Também altamente recomendo usar mongodb, procure onde tem MONGO= no arquivo .env e nele coloque o link da sua db do mongodb (caso não tenha, veja como obter por este [tutorial](https://www.youtube.com/watch?v=x1Gq5beRx9k)). 
-* 2 - Clique com botão direito em cima do arquivo main.py e depois clique em: Run Python File in Terminal.
-* **Nota 1:** Não esqueça de ir na lista de [workspaces](https://gitpod.io/workspaces) e clicar nos 3 pontinhos do projeto e depois clicar em **pin**. `(isso evitará o worskpace ser deletado após 14 dias inativo)`
-* **Nota 2:** Não use o gitpod para hospedar/manter o bot online, pois o mesmo não funciona pra isso!
+* 1 - Откройте файл .env и поместите токен бота в соответствующее поле (если у вас его нет, посмотрите, как его получить с помощью этого руководства [tutorial](https://www.youtube.com/watch? v=lfdmZQySTXE) как получить). Я также настоятельно рекомендую использовать mongodb, найдите, где у вас есть MONGO= в файле .env, и поместите в него ссылку на вашу базу данных mongodb (если у вас ее нет, посмотрите, как получить ее через этот [учебник] (https ://www.youtube.com/watch?v=x1Gq5beRx9k)).
+* 2 - Щелкните правой кнопкой мыши файл main.py и выберите «Запустить файл Python в терминале».
+* **Примечание 1:** Не забудьте перейти к списку [рабочих областей] (https://gitpod.io/workspaces) и щелкнуть 3 точки проекта, а затем нажать **закрепить**. `(это предотвратит удаление рабочего пространства после 14 дней бездействия)`
+* **Примечание 2:** Не используйте gitpod для размещения/поддержания бота в сети, он для этого не подходит!
 </details>
 
 ---
@@ -98,19 +98,18 @@ Heroku
 
 [![Heroku_Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/zRitsu/disnake-LL-music-bot/tree/main)
 
-**Nota: A partir do dia 28/11/2022 a heroku não vai mais fornecer planos gratuitos ([clique aqui](https://blog.heroku.com/next-chapter) para saber mais).** 
-* 1 - Preencha os dados que vão ser requisitados na próxima página
-* 2 - Clique em deploy app e aguarde (o processo pode demorar entre 2-5 minutos).
-* 3 - Clique em Manage e depois vá em resources.
-* 4 - Desative o dyno web e ative o autoupdate (ou o quickfix, não ative os 2 ao mesmo tempo!) e aguarde o bot logar. `(no canto superior clique em more e em view logs para acompanhar os logs)`
-* **Nota:** Caso queira alterar as configs usadas no passo 1, vá em settings e clique em Reveal Config Vars, crie/altere a key e o valor desejado da config, consulte o arquivo .env-example para ver todas as configs disponíveis.
+**Примечание. С 28 ноября 2022 г. heroku больше не будет предоставлять бесплатные планы ([нажмите здесь](https://blog.heroku.com/next-chapter), чтобы узнать больше).*** 1 - Заполните данные, которые будут запрошены на следующей странице
+* 2 - Нажмите «Развернуть приложение» и подождите (процесс может занять от 2 до 5 минут).
+* 3 - Нажмите «Управление» и перейдите к ресурсам.
+* 4 - Отключите веб-дино и включите автообновление (или быстрое исправление, не включайте оба одновременно!) И подождите, пока бот войдет в систему. `(в верхнем углу нажмите больше и просмотрите журналы, чтобы следить за журналами)`
+* **Примечание:** Если вы хотите изменить конфиги, использованные на шаге 1, перейдите в настройки и нажмите Reveal Config Vars, создайте/измените ключ и желаемое значение конфига, см. файл .env-example для просмотреть все доступные конфиги.
 </details>
 
 ---
 
 <details>
 <summary>
-Hospedando no seu próprio PC/VPS (windows/linux)
+Хостинг на собственном ПК/VPS (windows/linux)
 </summary>
 <br>
 
@@ -123,45 +122,43 @@ Hospedando no seu próprio PC/VPS (windows/linux)
 
 * [JDK 11](https://www.azul.com/downloads) ou superior (Windows e Linux x64 é baixado automaticamente)</br>
 
-`Nota: esta source requer no mínimo 512mb de RAM E 1Ghz de CPU para rodar normalmente (caso rode o Lavalink na mesma instância do bot considerando que o bot seja privado).`
+`Примечание. Для нормальной работы этого источника требуется не менее 512 МБ ОЗУ И 1 ГГц ЦП (если вы запускаете Lavalink на том же экземпляре бота, учитывая, что бот является частным).`
 
-### Iniciar bot (guia rápido):
+### Запустить бота (краткое руководство):
 
-* Baixe esta source como [zip](https://github.com/zRitsu/disnake-LL-music-bot/archive/refs/heads/main.zip) e extraia em seguida (Ou use o comando abaixo no terminal/cmd e abra a pasta em seguida):
-```shell
+* Загрузите этот исходник как [zip] (https://github.com/zRitsu/disnake-LL-music-bot/archive/refs/heads/main.zip) и распакуйте его (или используйте команду ниже в терминале/cmd а затем откройте папку):```shell
 git clone https://github.com/zRitsu/disnake-LL-music-bot.git
 ```
-* dê clique-duplo no arquivo setup.sh (ou apenas setup caso o seu windows não esteja exibindo extensões de arquivo) e aguarde.</br>
-`Caso esteja usando linux use o comando no terminal:` 
+* дважды щелкните файл setup.sh (или просто настройте, если ваши окна не отображают расширения файлов) и подождите.</br>
+  `Если вы используете Linux, используйте команду в терминале:`
 ```shell
 bash setup.sh
 ```
-* Vai aparecer um arquivo com nome **.env**, edite ele e coloque o token do bot no campo apropriado (você também pode editar outras coisas deste mesmo arquivo caso queira fazer ajustes específicos no bot).</br>
-`Nota: Caso não tenha criado uma conta de bot,` [veja este tutorial](https://www.youtube.com/watch?v=lfdmZQySTXE) `para criar seu bot e obter o token necessário.`</br>`Também altamente recomendo usar mongodb, procure onde tem MONGO= no arquivo .env e nele coloque o link da sua db do mongodb (caso não tenha, veja como obter por este` [tutorial](https://www.youtube.com/watch?v=x1Gq5beRx9k)`). ` 
-* Agora basta apenas abrir o arquivo run.sh para iniciar o bot (caso esteja usando linux use o comando abaixo):
+* Появится файл с именем **.env**, отредактируйте его и поместите токен бота в соответствующее поле (вы также можете редактировать другие вещи в этом же файле, если хотите внести определенные изменения в бота).</br >
+  `Примечание. Если вы не создали учетную запись бота,` [см. это руководство](https://www.youtube.com/watch?v=lfdmZQySTXE), `чтобы создать своего бота и получить необходимый токен.`</br >`Я также настоятельно рекомендую использовать mongodb, найдите, где у вас есть MONGO= в файле .env, и поместите в него ссылку на вашу базу данных mongodb (если у вас ее нет, посмотрите, как получить ее из этого` [ учебник](https://www.youtube.com/watch?v=x1Gq5beRx9k)`). `
+* Теперь просто откройте файл run.sh, чтобы запустить бота (если вы используете Linux, используйте команду ниже):
 ```shell
 bash run.sh
 ```
 
 ### Notas:
 
-* Para atualizar seu bot dê um clique duplo no update.sh (windows), p/ Linux use o comando no shell/terminal:
+* Чтобы обновить бота, дважды щелкните файл update.sh (Windows), для Linux используйте команду оболочки/терминала:
 ```shell
 bash update.sh
 ```
-`Ao atualizar, há chance de qualquer alteração manual feita ser perdida (caso não seja um fork desta source)...`<br/>
+`При обновлении есть шанс, что любые сделанные вручную изменения будут потеряны (если не форк этого исходника)...`<br/>
 
-`Obs: Caso esteja rodando a source diretamente de uma máquina com windows (e que tenha git instalado) apenas dê um duplo-click no arquivo update.sh`
-</details>
+`Примечание. Если вы запускаете исходный код непосредственно с компьютера с Windows (и на котором установлен git), просто дважды щелкните файл update.sh`</details>
 
 ---
 
-Nota: há mais alguns guias na [wiki]((https://github.com/zRitsu/disnake-LL-music-bot/wiki)).
+Примечание: на [wiki]((https://github.com/zRitsu/disnake-LL-music-bot/wiki) есть еще несколько руководств).
 
-### Observaçoes importantes:
+### Важные заметки:
 
-* Esta source foi criada com intuito para uso de bots privados (não está otimizado o suficiente pra lidar com alta demanda de servidores).
+* Этот источник был создан с целью использования частных ботов (он недостаточно оптимизирован для обработки высоких запросов сервера).
 
-* Recomendo usar a source atual sem alterações no code que vá alem de textos. Caso queira fazer modificações (e principalmente adicionar novas funcionalidades) é altamente recomendável que tenha conhecimento em python e disnake. E caso queira manter sua source modificada com updates em dias usando a source base também recomendo ter conhecimento em git (pelo menos o necessário pra fazer um merge sem erros).
+* Рекомендую использовать текущий исходник без изменений кода, выходящих за рамки текстов. Если вы хотите внести изменения (и особенно добавить новые функции), настоятельно рекомендуется иметь знания о python и disnake. И если вы хотите, чтобы ваш исходник модифицировался с обновлениями в днях, используя базовый исходник, я также рекомендую иметь знания в git (по крайней мере, достаточно, чтобы сделать слияние без ошибок).
 
-* Caso queira fazer algum vídeo/tutorial usando esta source, você está totalmente livre para usá-la pra essa finalidade desde que esteja de acordo com a [licença](/LICENSE) (e caso queira me ajudar, mantenha os créditos originais no code, aparece apenas no comando /about)
+* Если вы хотите сделать видео/учебник, используя этот источник, вы можете совершенно свободно использовать его для этой цели, если он соответствует [лицензии](/LICENSE) (и если вы хотите помочь мне, сохраните исходные титры в коде появляются только в команде /about)
