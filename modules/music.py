@@ -878,10 +878,10 @@ class Music(commands.Cog):
 
         if player.loop == "current":
             player.loop = False
-        player.is_previows_music = True
         if not player.current:
             await player.process_next()
         else:
+            player.is_previows_music = True
             await player.stop()
 
     @check_voice()
@@ -3124,13 +3124,10 @@ class Music(commands.Cog):
 
             if not check:
                 player.members_timeout_task = self.bot.loop.create_task(player.members_timeout())
-            elif player.paused:
-                await player.set_pause(False)
-                player.set_command_log("", "")
-                try:
-                    await player.invoke_np()
-                except Exception:
-                    traceback.print_exc()
+            elif not player.can_process_next:
+                player.can_process_next = True
+                if not player.current:
+                    await player.process_next()
 
         # rich presence stuff
 
