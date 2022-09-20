@@ -261,7 +261,7 @@ class PinManager(commands.Cog):
 
     @commands.cooldown(1, 20, commands.BucketType.guild)
     @pin.sub_command(
-        name=disnake.Localized("export", data={disnake.Locale.pt_BR: "Экспорт"}),
+        name=disnake.Localized("export", data={disnake.Locale.pt_BR: "экспорт"}),
         description=f"{desc_prefix}Экспортируйте фиксированные ссылки на музыку/плейлист сервера в файл json."
     )
     async def export(self, inter: disnake.ApplicationCommandInteraction):
