@@ -369,7 +369,7 @@ class LavalinkPlayer(wavelink.Player):
             )
 
         embed = disnake.Embed(
-            description=f"**Não há músicas na fila... Adicione uma música ou use uma das opções abaixo.\n\n"
+            description=f"**В очереди нет песен... Adicione uma música ou use uma das opções abaixo.\n\n"
                         f"Nota:** `O Player será desligado automaticamente` "
                         f"<t:{int((disnake.utils.utcnow() + datetime.timedelta(seconds=self.idle_timeout)).timestamp())}:R> "
                         f"`caso nenhuma ação seja executada...`",

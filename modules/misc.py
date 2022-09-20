@@ -25,7 +25,7 @@ class Misc(commands.Cog):
         self.extra_user_bots = []
         self.extra_user_bots_ids = [int(i) for i in bot.config['ADDITIONAL_BOT_IDS'].split() if i.isdigit()]
 
-    desc_prefix = "🔰 [Outros] 🔰 | "
+    desc_prefix = "🔰 [Другое] 🔰 | "
 
 
     def placeholders(self, text: str):
@@ -49,7 +49,7 @@ class Misc(commands.Cog):
 
             for i in self.bot.config.get("LISTENING_PRESENCES", "").split("||"):
                 if i:
-                    activities.append({"name":i, "type": "listening"})
+                    activities.append({"name": i, "type": "listening"})
 
             for i in self.bot.config.get("WATCHING_PRESENCES", "").split("||"):
                 if i:

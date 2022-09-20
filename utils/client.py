@@ -111,7 +111,7 @@ class BotPool:
                 try:
                     LAVALINK_SERVERS[key] = json.loads(value)
                 except Exception as e:
-                    print(f"Falha ao adicionar node: {key}, erro: {repr(e)}")
+                    print(f"Не удалось добавить узел: {key}, erro: {repr(e)}")
 
         config = ConfigParser()
         try:
@@ -137,7 +137,7 @@ class BotPool:
         mongo_key = self.config.get("MONGO")
 
         if not mongo_key:
-            print(f"O token/link do mongoDB não foi configurado...\nSerá usado um arquivo json para database.\n{'-' * 30}")
+            print(f"O token/link mongoDB не настроен...\nФайл json будет использоваться для базы данных.\n{'-' * 30}")
             self.database = LocalDatabase()
         else:
             self.database = MongoDatabase(token=mongo_key)
@@ -203,8 +203,8 @@ class BotPool:
                 async def check_commands(ctx: commands.Context):
 
                     if not (await bot.is_owner(ctx.author)):
-                        raise GenericError("**Os comandos de texto estão desativados!\n"
-                                           "Use os comandos de barra /**")
+                        raise GenericError("**Текстовые команды отключены!\n"
+                                           "Используйте команды с помощью /**")
 
                     return True
 
@@ -248,7 +248,7 @@ class BotPool:
             load_bot(bot_name, v)
 
         if not self.bots:
-            raise Exception("O token do bot não foi configurado devidamente!")
+            raise Exception("Токен бота настроен неправильно!")
 
         if start_local:
             self.lavalink_process = run_lavalink(
@@ -323,13 +323,13 @@ class BotCore(commands.AutoShardedBot):
                 skin_file = import_module(f"utils.music.skins.{skin[:-3]}")
 
                 if not hasattr(skin_file, "load"):
-                    print(f"Skin ignorada: {skin} | Função load() não configurada/encontrada...")
+                    print(f"Скин проигнорирован: {skin} | Функция load() не установлена/найдена...")
                     continue
 
                 self.player_skins[skin[:-3]] = skin_file.load
 
             except Exception:
-                print(f"Falha ao carregar skin: {traceback.format_exc()}")
+                print(f"Не удалось загрузить скин: {traceback.format_exc()}")
 
         if self.default_skin not in self.player_skins:
             self.default_skin = "default"
@@ -377,7 +377,7 @@ class BotCore(commands.AutoShardedBot):
                 return
 
             try:
-                await message.author.send(f"Não tenho permissão para enviar mensagens no canal {message.channel.mention}...")
+                await message.author.send(f"Мне не разрешено отправлять сообщения на канале {message.channel.mention}...")
             except disnake.HTTPException:
                 pass
 
@@ -408,22 +408,22 @@ class BotCore(commands.AutoShardedBot):
 
                 prefix = (await self.get_prefix(message))[-1]
 
-                embed.description = f"**Olá {message.author.mention}.\n" \
-                                    f"Para ver todos os meus comandos use: /**"
+                embed.description = f"**Привет {message.author.mention}.\n" \
+                                    f"Чтобы увидеть все мои команды, используйте: /**"
 
                 if message.author.guild_permissions.administrator:
                     embed.description += f"\n\n{sync_message(self)}"
 
                 if not self.config["INTERACTION_COMMAND_ONLY"]:
-                    embed.description += f"\n\nTambém tenho comandos de texto por prefixo.\n" \
-                                        f"Para ver todos os meus comandos de texto use **{prefix}help**\n"
+                    embed.description += f"\n\nУ меня также есть текстовые команды по префиксу.\n" \
+                                        f"Чтобы увидеть все мои текстовые команды, используйте **{prefix}help**\n"
 
                 view = None
 
             else:
 
-                embed.title = "PAINEL DE CONTROLE."
-                embed.set_footer(text="Clique em uma tarefa que deseja executar.")
+                embed.title = "ПАНЕЛЬ УПРАВЛЕНИЯ."
+                embed.set_footer(text="Нажмите на задачу, которую хотите запустить.")
                 view = PanelView(self)
 
             await message.reply(embed=embed, view=view)
@@ -464,12 +464,12 @@ class BotCore(commands.AutoShardedBot):
     async def on_application_command(self, inter: disnake.ApplicationCommandInteraction):
 
         if not inter.guild:
-            await inter.send("Meus comandos não podem ser usados no DM.\n"
-                             "Use em algum servidor que estou presente.")
+            await inter.send("Мои команды не могут быть использованы в ЛС.\n"
+                             "Используйте на сервере, на котором я присутствую.")
             return
 
         if not self.bot_ready:
-            await inter.send("Ainda estou inicializando...\nPor favor aguarde mais um pouco...", ephemeral=True)
+            await inter.send("Я все еще загружаюсь...\nПожалуйста, подождите еще немного...", ephemeral=True)
             return
 
         if self.config["COMMAND_LOG"]:
@@ -499,19 +499,19 @@ class BotCore(commands.AutoShardedBot):
                 module_filename = os.path.join(modules_dir, filename).replace('\\', '.').replace('/', '.')
                 try:
                     self.reload_extension(module_filename)
-                    print(f"{'=' * 48}\n[OK] {bot_name} - {filename}.py Recarregado.")
+                    print(f"{'=' * 48}\n[OK] {bot_name} - {filename}.py Перезагружен.")
                     load_status["reloaded"].append(f"{filename}.py")
                 except (commands.ExtensionAlreadyLoaded, commands.ExtensionNotLoaded):
                     try:
                         self.load_extension(module_filename)
-                        print(f"{'=' * 48}\n[OK] {bot_name} - {filename}.py Carregado.")
+                        print(f"{'=' * 48}\n[OK] {bot_name} - {filename}.py Перезагружен.")
                         load_status["loaded"].append(f"{filename}.py")
                     except Exception:
-                        print((f"{'=' * 48}\n[ERRO] {bot_name} - Falha ao carregar/recarregar o módulo: {filename} | Erro:"
+                        print((f"{'=' * 48}\n[ERRO] {bot_name} - Не удалось загрузить/перезагрузить модуль: {filename} | Erro:"
                                f"\n{traceback.format_exc()}"))
                         load_status["error"].append(f"{filename}.py")
                 except Exception:
-                    print((f"{'=' * 48}\n[ERRO] {bot_name} - Falha ao carregar/recarregar o módulo: {filename} | Erro:"
+                    print((f"{'=' * 48}\n[ERRO] {bot_name} - Не удалось загрузить/перезагрузить модуль: {filename} | Erro:"
                       f"\n{traceback.format_exc()}"))
                     load_status["error"].append(f"{filename}.py")
 
@@ -519,7 +519,7 @@ class BotCore(commands.AutoShardedBot):
 
         for c in self.slash_commands:
             if (desc:=len(c.description)) > 100:
-                raise Exception(f"A descrição do comando {c.name} excedeu a quantidade de caracteres permitido "
-                                f"no discord (100), quantidade atual: {desc}")
+                raise Exception(f"При выполнении команды {c.name} превышено допустимое количество символов "
+                                f"в discord (100), Текущее количество: {desc}")
 
         return load_status

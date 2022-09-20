@@ -285,7 +285,7 @@ class MusicSettings(commands.Cog):
 
                 await func(
                     embed=disnake.Embed(
-                        description="**Tempo esgotado!**",
+                        description="**Время вышло!**",
                         color=disnake.Color.red()
                     ),
                     components=None
@@ -675,7 +675,7 @@ class MusicSettings(commands.Cog):
                     msg = await inter.original_message()
                 except AttributeError:
                     pass
-                await msg.edit(view=None, embed=disnake.Embed(description="**Tempo esgotado!**", colour=self.bot.get_color(inter.guild.me)))
+                await msg.edit(view=None, embed=disnake.Embed(description="**Время вышло!**", colour=self.bot.get_color(inter.guild.me)))
                 return
             else:
                 inter = resp
