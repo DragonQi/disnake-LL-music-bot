@@ -20,7 +20,7 @@ class FavManager(commands.Cog):
     desc_prefix = "⭐ [Избранное] ⭐ | "
 
     @commands.max_concurrency(1, commands.BucketType.user)
-    @commands.slash_command(name=disnake.Localized("fav", data={disnake.Locale.pt_BR: "Избранное"}),)
+    @commands.slash_command(name=disnake.Localized("fav", data={disnake.Locale.pt_BR: "избранное"}),)
     async def fav(self, inter: disnake.ApplicationCommandInteraction):
         pass
 
