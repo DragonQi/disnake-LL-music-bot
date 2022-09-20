@@ -23,7 +23,7 @@ class ErrorHandler(commands.Cog):
         if self.bot.config["ERROR_REPORT_WEBHOOK"]:
             self.components.append(
                 disnake.ui.Button(
-                    label="Reporte esse erro",
+                    label="Сообщение об ошибке",
                     custom_id="report_error",
                     emoji="⚠"
                 )
@@ -32,7 +32,7 @@ class ErrorHandler(commands.Cog):
         if self.bot.config["SUPPORT_SERVER"]:
             self.components.append(
                 disnake.ui.Button(
-                    label="Servidor de suporte",
+                    label="Сервер поддержки",
                     url=self.bot.config["SUPPORT_SERVER"]
                 )
             )
@@ -89,12 +89,12 @@ class ErrorHandler(commands.Cog):
 
             if not error_msg:
 
-                kwargs["embed"].title = "Ocorreu um erro no comando:"
+                kwargs["embed"].title = "Произошла ошибка в команде:"
                 kwargs["embed"].description = f"```py\n{repr(error)[:2030].replace(self.bot.http.token, 'mytoken')}```"
 
                 if self.bot.config["AUTO_ERROR_REPORT_WEBHOOK"]:
                     send_webhook = True
-                    kwargs["embed"].description += " `Meu desenvolvedor será notificado sobre o problema.`"
+                    kwargs["embed"].description += " `Мой разработчик будет уведомлен о проблеме.`"
 
                 else:
 
@@ -109,7 +109,7 @@ class ErrorHandler(commands.Cog):
 
             if not error_msg:
                 components = self.components
-                kwargs["text"] += " ocorreu um erro no comando: ```py\n" \
+                kwargs["text"] += " произошла ошибка в команде: ```py\n" \
                                   f"{repr(error)[:2030].replace(self.bot.http.token, 'mytoken')}```"
             else:
                 components = None
@@ -158,11 +158,11 @@ class ErrorHandler(commands.Cog):
             kwargs["content"] = ctx.author.mention
 
             if not error_msg:
-                kwargs["embed"].title = "Ocorreu um erro no comando:"
+                kwargs["embed"].title = "Произошла ошибка в команде:"
                 kwargs["embed"].description = f"```py\n{repr(error)[:2030].replace(self.bot.http.token, 'mytoken')}```"
                 if self.bot.config["AUTO_ERROR_REPORT_WEBHOOK"]:
                     send_webhook = True
-                    kwargs["embed"].description += " `Meu desenvolvedor será notificado sobre o problema.`"
+                    kwargs["embed"].description += " `Мой разработчик будет уведомлен о проблеме.`"
                 else:
                     components = self.components
 
@@ -174,11 +174,11 @@ class ErrorHandler(commands.Cog):
             kwargs["content"] = ctx.author.mention
 
             if not error_msg:
-                kwargs["content"] += " ocorreu um erro no comando: ```py\n" \
+                kwargs["content"] += " Произошла ошибка в команде: ```py\n" \
                                      f"{repr(error)[:2030].replace(self.bot.http.token, 'mytoken')}```"
                 if self.bot.config["AUTO_ERROR_REPORT_WEBHOOK"]:
                     send_webhook = True
-                    kwargs["content"] += " `Meu desenvolvedor será notificado sobre o problema.`"
+                    kwargs["content"] += " `Мой разработчик будет уведомлен о проблеме.`"
                 else:
                     components = self.components
             else:
@@ -223,23 +223,23 @@ class ErrorHandler(commands.Cog):
             return
 
         if str(inter.author.id) not in inter.message.content:
-            await inter.send(f"Apenas o usuário {inter.message.content} pode usar esse botão!", ephemeral=True)
+            await inter.send(f"Только пользователь {inter.message.content} может использовать эту кнопку", ephemeral=True)
             return
 
         await inter.response.send_modal(
-            title="Reportar erro",
+            title="Сообщить об ошибке",
             custom_id=f"error_report_submit_{inter.message.id}",
             components=[
                 disnake.ui.TextInput(
                     style=disnake.TextInputStyle.long,
-                    label="Detalhes",
+                    label="Подробности",
                     custom_id="error_details",
                     max_length=1900,
                     required=True
                 ),
                 disnake.ui.TextInput(
                     style=disnake.TextInputStyle.short,
-                    label="Link de imagem/print do erro (Opcional)",
+                    label="Ссылка на фото/скриншот ошибки (опционально)",
                     custom_id="image_url",
                     max_length=300,
                     required=False
@@ -256,7 +256,7 @@ class ErrorHandler(commands.Cog):
         if not inter.message.embeds:
             await inter.response.edit_message(
                 embed=disnake.Embed(
-                    title="A embed da mensagem foi removida!",
+                    title="Вставка сообщения была удалена!",
                     description=inter.text_values["error_details"]
                 ), view=None
             )
@@ -267,7 +267,7 @@ class ErrorHandler(commands.Cog):
         if image_url and not URL_REG.match(image_url):
             await inter.send(
                 embed=disnake.Embed(
-                    title="Link de imagem inválida!",
+                    title="Неверная ссылка на изображение!",
                     description=inter.text_values["error_details"]
                 ), ephemeral=True
             )
@@ -276,14 +276,14 @@ class ErrorHandler(commands.Cog):
         embed = disnake.Embed(
             color=self.bot.get_color(inter.guild.me),
             description=inter.text_values["error_details"],
-            title="Report de erro"
+            title="Сообщить об ошибке"
         )
 
         embed.add_field(name="Log:", value=inter.message.embeds[0].description)
 
         await inter.response.edit_message(
             embed=disnake.Embed(
-                description="**Erro reportado com sucesso!**",
+                description="**Репорт ошибки успешно отправлен**",
                 color=self.bot.get_color(inter.guild.me)
             ), view=None
         )
@@ -293,7 +293,7 @@ class ErrorHandler(commands.Cog):
         except AttributeError:
             user_avatar = inter.author.avatar.url
 
-        embed.set_author(name=f"Erro reportado: {inter.author} - {inter.author.id}", icon_url=user_avatar)
+        embed.set_author(name=f"Сообщение об ошибке: {inter.author} - {inter.author.id}", icon_url=user_avatar)
 
         guild_txt = f"Servidor: {inter.guild.name} [{inter.guild.id}]"
 
@@ -310,7 +310,7 @@ class ErrorHandler(commands.Cog):
     def build_report_embed(self, ctx):
 
         embed = disnake.Embed(
-            title="Ocorreu um erro em um servidor:",
+            title="Произошла ошибка на сервере:",
             color=self.bot.get_color(ctx.guild.me),
             timestamp=disnake.utils.utcnow()
         )
@@ -329,7 +329,7 @@ class ErrorHandler(commands.Cog):
 
         if vc := ctx.author.voice:
             embed.add_field(
-                name="Canal de voz (user):", inline=False,
+                name="Голосовой канал (пользователь):", inline=False,
                 value=f"```\n{disnake.utils.escape_markdown(vc.channel.name)}" +
                       (f" ({len(vc.channel.voice_states)}/{vc.channel.user_limit})"
                        if vc.channel.user_limit else "") + f"\nID: {vc.channel.id}```"
@@ -338,7 +338,7 @@ class ErrorHandler(commands.Cog):
         if vcbot := ctx.guild.me.voice:
             if vcbot.channel != vc.channel:
                 embed.add_field(
-                    name="Canal de voz (bot):", inline=False,
+                    name="Голосовой канал (бот):", inline=False,
                     value=f"{vc.channel.name}" +
                           (f" ({len(vc.channel.voice_states)}/{vc.channel.user_limit})"
                            if vc.channel.user_limit else "") + f"\nID: {vc.channel.id}```"
@@ -346,16 +346,16 @@ class ErrorHandler(commands.Cog):
 
         try:
 
-            embed.description = f"**Slash Command:**```\n{ctx.data.name}``` "
+            embed.description = f"**Слэш команда:**```\n{ctx.data.name}``` "
 
             if ctx.filled_options:
-                embed.description += "**Options**```\n" + \
+                embed.description += "**Опции**```\n" + \
                                      "\n".join(f"{k} -> {disnake.utils.escape_markdown(v)}"
                                                for k, v in ctx.filled_options.items()) + "```"
 
         except AttributeError:
             if self.bot.intents.message_content and not ctx.author.bot:
-                embed.description = f"**Commando:**```\n" \
+                embed.description = f"**Команда:**```\n" \
                                     f"{ctx.message.content.replace(str(self.bot.user.mention), f'@{ctx.guild.me.display_name}')}" \
                                     f"```"
 
