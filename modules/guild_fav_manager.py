@@ -191,7 +191,7 @@ class PinManager(commands.Cog):
     async def import_(
             self,
             inter: disnake.ApplicationCommandInteraction,
-            file: disnake.Attachment = commands.Param(name="Файл", description="файл в формате .json")
+            file: disnake.Attachment = commands.Param(name="arquivo", description="файл в формате .json")
     ):
 
         if file.size > 2097152:
