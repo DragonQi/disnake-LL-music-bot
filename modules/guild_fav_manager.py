@@ -185,7 +185,7 @@ class PinManager(commands.Cog):
 
     @commands.cooldown(1, 20, commands.BucketType.guild)
     @pin.sub_command(
-        name=disnake.Localized("import", data={disnake.Locale.pt_BR: "Импорт"}),
+        name=disnake.Localized("import", data={disnake.Locale.pt_BR: "импорт"}),
         description=f"{desc_prefix}Импорт ссылок из файла. json в список ссылок на сервер."
     )
     async def import_(
